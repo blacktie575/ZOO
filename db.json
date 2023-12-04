@@ -1,0 +1,28 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "type": "Dog",
+      "age": 3,
+      "favoriteFood": "Bones"
+    },
+    {
+      "id": 2,
+      "type": "Cat",
+      "age": 2,
+      "favoriteFood": "Fish"
+    },
+    {
+      "title": "vsv",
+      "body": "Age: 3, Favorite Food: eg",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "title": "vsv",
+      "body": "Age: 5, Favorite Food: dv",
+      "userId": 1,
+      "id": 4
+    }
+  ]
+}

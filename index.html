@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal CRUD</title>
+</head>
+<body>
+
+    <h1> ZOO</h1>
+
+    <label for="animalType">Animal Type:</label>
+    <input type="text" id="animalType">
+
+    <label for="age">Age:</label>
+    <input type="number" id="age">
+
+    <label for="favoriteFood">Favorite Food:</label>
+    <input type="text" id="favoriteFood">
+
+    <button onclick="addAnimal()">Add</button>
+    <button onclick="deleteAnimal()">Delete</button>
+    <button onclick="showAllAnimals()">Show All</button>
+    <button onclick="updateAnimal()">Update</button>
+
+    <div id="animalList"></div>
+
+    <script>
+        const apiUrl = 'http://localhost:3000/animals' // Use your actual API endpoint
+
+        function addAnimal() {
+            const animalType = document.getElementById('animalType').value;
+            const age = document.getElementById('age').value;
+            const favoriteFood = document.getElementById('favoriteFood').value;
+
+            const newAnimal = {
+                title: animalType,
+                body: `Age: ${age}, Favorite Food: ${favoriteFood}`,
+                userId: 1 // Placeholder for user ID
+            };
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newAnimal),
+            })
+            .then(response => response.json())
+            .then(data => console.log('Added:', data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function deleteAnimal() {
+            // Implement delete functionality using fetch
+            // Make a DELETE request to the API with the ID of the record you want to delete
+        }
+
+        function showAllAnimals() {
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const animalList = document.getElementById('animalList');
+                animalList.innerHTML = '<h2>All Animals</h2>';
+                data.forEach(animal => {
+                    const item = document.createElement('div');
+                    item.textContent = `${animal.title} - ${animal.body}`;
+                    animalList.appendChild(item);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateAnimal() {
+            // Implement update functionality using fetch
+            // Make a PUT request to the API with the ID and updated data
+        }
+    </script>
+
+</body>
+</html>
